@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trippy Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <div class="clockface">
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="hand ms-hand"></div>
+        </div>
+    </div>
+
+    <script>
+        function setDate() {
+            // console.log('Hi');
+            const secondhand = document.querySelector('.second-hand');
+            const hourhand = document.querySelector('.hour-hand');
+            const minutehand = document.querySelector('.minute-hand');
+            const now = new Date();
+            // console.log(now)
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            // console.log(seconds);
+            const secondDegrees = ((seconds / 60) * 360) + 90;
+            const minutedegrees = ((minutes / 60) * 360) + 90;
+            const hourdegrees = ((hours / 60) * 360) + 180;
+            // console.log(secondDegrees);
+            secondhand.style.transform = `rotate(${secondDegrees}deg)`;
+            minutehand.style.transform = `rotate(${minutedegrees}deg)`;
+            hourhand.style.transform = `rotate(${hourdegrees}deg)`;
+
+
+        }
+        setInterval(setDate, 1000);
+    </script>
+</body>
+
+</html>
